@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llama-index-tools-geekflare"
+version = "0.1.0"
+description = "LlamaIndex tools for Geekflare: web search, Google SERP, scraping, screenshots, PDFs, brand data, and website diagnostics."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Geekflare", email = "support@geekflare.com" }]
+requires-python = ">=3.10,<4.0"
+keywords = ["llama-index", "llamaindex", "geekflare", "web search", "scraping", "screenshot", "dns", "tools"]
+dependencies = [
+  "llama-index-core>=0.12.0,<0.15",
+  "geekflare-api>=0.3.2",
+]
+
+[project.urls]
+Homepage = "https://geekflare.com"
+Documentation = "https://docs.geekflare.com"
+Repository = "https://github.com/geekflare/llama-index-tools-geekflare"
+Issues = "https://github.com/geekflare/llama-index-tools-geekflare/issues"
+
+[dependency-groups]
+test = ["pytest>=8", "pytest-socket>=0.7"]
+
+[tool.hatch.build.targets.sdist]
+include = ["llama_index/", "tests/", "README.md", "LICENSE"]
+
+[tool.hatch.build.targets.wheel]
+include = ["llama_index/"]
+
+[tool.llamahub]
+contains_example = false
+import_path = "llama_index.tools.geekflare"
+
+[tool.llamahub.class_authors]
+GeekflareToolSpec = "geekflare"
