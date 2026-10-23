@@ -1,0 +1,19 @@
+# Monthly dependency update PRs. Related updates are grouped to keep the PR count low.
+# The package's own dependency ranges only change when a new release falls outside them.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: monthly
+    versioning-strategy: increase-if-necessary
+    groups:
+      python:
+        patterns: ["*"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]

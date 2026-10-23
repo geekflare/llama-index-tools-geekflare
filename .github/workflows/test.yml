@@ -1,0 +1,17 @@
+name: test
+
+# Runs the unit tests on pull requests, including Dependabot's update PRs.
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv venv && uv pip install -e . --group test
+      - run: uv run --no-sync pytest --disable-socket --allow-unix-socket tests/test_tools_geekflare.py
